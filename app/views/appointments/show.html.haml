@@ -1,0 +1,15 @@
+%h2 Todays Appointments
+%table.table.table-hover
+  %tr
+    %th Patient name
+    %th Physician name
+    %th Appointment Date
+    %th Edit
+  - @todays_appointments.each do |appointment|
+    %tr
+      %td= Patient.find(appointment.patient_id).name
+      %td= Physician.find(appointment.physician_id).name
+      %td= appointment.appointment_date
+      %td= link_to 'Edit', edit_appointment_path(appointment)
+
+

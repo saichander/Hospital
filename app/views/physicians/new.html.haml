@@ -1,0 +1,8 @@
+= form_tag(create_physician_path,class:"form-horizontal  form-center") do
+  = label_tag(:name, "Physician Name:")
+  = text_field_tag :name,nil , class:"form-control"
+  = label_tag(:specialization, "Specialization:")
+  = text_field_tag(:specialization,nil ,class:"form-control")
+  %br
+  = submit_tag("Add Physician",class:"btn btn-primary")
+

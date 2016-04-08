@@ -1,0 +1,16 @@
+= form_tag patient_appointments_path,method: :get, class:'form-horizontal  form-center' do
+  = label_tag(:search_term,"Patient Name:")
+  = select_tag :search_term, options_for_select(Patient.all.collect{ |u| [u.name, u.id] },'Select Patient'),class:"form-control"
+  = submit_tag("Search",class: 'btn btn-primary')
+- if params[:search_term]
+  %h2 Patient_appointments
+  %table.table
+    %tr
+      %th Physician name
+      %th Appointment Date
+    - @patient_appointments.each do |appointment|
+      %tr
+        %td= Physician.find(appointment.physician_id).name
+        %td= appointment.appointment_date
+
+

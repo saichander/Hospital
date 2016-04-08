@@ -1,10 +1,78 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 /*header*/
+.navbar-inverse{
+  background-color:#81C99F;
+  color:#fff;
+}
+.navbar-fixed-top{
+}
+.logo .title{
+  margin-top:0px;
+  margin-left:10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size:24px;
+}
 
+.navbar-inverse .navbar-nav  li  a {
+  color:#fff;
+  &:hover{
+  color:orange;
+  }
+}
+.rtop{
+  margin-right:20px;
+}
 /*footer*/
 .copyright{
   padding-top:5px;
   color:#fff;
-text-align:center;
+  text-align:center;
+}
+
+/*body*/
+.container-fluid {
+  margin-top:84px;
+}
+.center{
+  padding-left:335px;
+}
+.btn-warning{
+background-color:#194294;
+}
+.right{
+background-color:#F5F5F5;
+height:549px;
+}
+/*left*/
+.left{
+  background-color:#81C99F;
+  height:549px;
+  padding:0;
+}
+.left-menu{
+  list-style:None;
+  padding:0;
+  li{
+    padding:10px;
+    border:1px solid #000;
+    border-top:0;
+    a{
+    color:#fff;
+  }}
+}
+.dropdown-toggle:active{
+  ul{
+    display: block;
+  }
+}
+/* forms*/
+.form-control{
+  width:300px;
+}
+.btn{
+  margin:5px 0;
+}
+.form-center{
+margin:30px 0 0 40px;
 }

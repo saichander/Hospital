@@ -1,0 +1,12 @@
+= form_tag(update_appointment_path,method: :patch,class:'form-horizontal form-center') do
+  = label_tag("Patient Name:")
+  = select_tag "patient", options_for_select(@patients.collect{ |u| [u.name, u.id] },'Select Patient'),class:"form-control"
+  = label_tag("Physician Name:")
+  = select_tag "physician", options_for_select(@physicians.collect{ |u| [u.name, u.id] },'Select Physician'),class:"form-control"
+  = label_tag(:appointment_date, "Appointment Date:")
+  = datetime_local_field_tag(:appointment_date,default: @edit_appointment.appointment_date, class:"form-control")
+  %br
+  = submit_tag("Make appointment",class:"btn btn-primary")
+
+
+

@@ -5,8 +5,15 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:400,600italic&subset=latin,latin-ext", :rel => "stylesheet", :type => "text/css"}
   %body
     = render 'layouts/header'
-    .container
-      = yield
+    .container-fluid
+      - flash.each do |message_type, message|
+        %div{:class => "alert alert-#{message_type}"}= message
+      .row.main
+        .left.col-xs-2
+          = render 'layouts/left'
+        .right.col-xs-10
+          = yield
     = render 'layouts/footer'

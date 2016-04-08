@@ -1,2 +1,4 @@
-%h1 Dashboards#home
-%p Find me in app/views/dashboards/home.html.erb
+.center
+  = link_to 'Make an Appointment', new_appointment_path,class: "btn btn-warning btn-lg"
+= render :template => 'appointments/show'
+

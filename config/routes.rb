@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
   devise_for :admins
    root 'dashboards#home'
+
+  get 'physicians/new' => 'physicians/new',as: :new_physician
+  post 'physicians/create' => 'physicians/create',as: :create_physician
+
+  get 'patients/new' => 'patients/new',as: :new_patient
+  post 'patients/create' => 'patients/create',as: :create_patient
+
+  get 'appointments/new' => 'appointments/new',as: :new_appointment
+  post 'appointments/create' => 'appointments/create',as: :create_appointment
+  get '/appointments' => 'appointments#index',as: :appointments
+  get '/appointments/:id/edit' => 'appointments#edit',as: :edit_appointment
+  get 'appointments/today' => 'appointments#show',as: :show_appointments
+  patch 'appointments/:id' => 'appointments#update',as: :update_appointment
+  get 'patient/appointments' => 'appointments#patient',as: :patient_appointments
+  get 'physician/appointments' => 'appointments#physician',as: :physician_appointments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
