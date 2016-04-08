@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
     @physician = Physician.find(params[:physician])
     @appointment = @patient.appointments.create(physician_id: @physician.id,appointment_date: params[:appointment_date])
     if @appointment.save
-      redirect_to appointments_path
+      redirect_to root_path
     else
       @patients = Patient.all
       @physicians = Physician.all
