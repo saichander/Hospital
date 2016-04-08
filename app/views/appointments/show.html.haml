@@ -10,6 +10,6 @@
       %td= Patient.find(appointment.patient_id).name
       %td= Physician.find(appointment.physician_id).name
       %td= appointment.appointment_date
-      %td= link_to 'Edit', edit_appointment_path(appointment)
+      %td= link_to 'Edit', edit_appointments_path(appointment)
 
 

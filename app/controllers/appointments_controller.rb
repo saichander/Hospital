@@ -20,11 +20,11 @@ class AppointmentsController < ApplicationController
   def edit
     @patients = Patient.all
     @physicians = Physician.all
-    @edit_appointment = Appointment.find(params[:id])
+    @edit_appointment = Appointment.find(params[:format])
   end
 
   def update
-    @edit_appointment = Appointment.find(params[:id])
+    @edit_appointment = Appointment.find(params[:format])
     @appointment = @edit_appointment.update_attributes(appointment_params)
     if @appointment.save
       redirect_to root_path

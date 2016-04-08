@@ -1,4 +1,4 @@
-= form_tag(create_appointment_path,class:'form-horizontal form-center') do
+= form_tag(appointments_path,class:'form-horizontal form-center') do
   = label_tag("Patient Name:")
   = select_tag "patient", options_for_select(@patients.collect{ |u| [u.name, u.id] },'Select Patient'),class:"form-control"
   = label_tag("Physician Name:")
