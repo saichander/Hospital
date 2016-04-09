@@ -1,5 +1,6 @@
 class PhysiciansController < ApplicationController
   def new
+    @physician = Physician.new
   end
 
   def create
@@ -22,6 +23,6 @@ class PhysiciansController < ApplicationController
 
   private
   def physician_params
-    params.permit(:name, :specialization)
+    params.require(:physician).permit(:name, :specialization)
   end
 end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :patients
 
   resource :appointments
-  get '/appointments' => 'appointments#index',as: :appointments_index
+  get '/appointments/index' => 'appointments#index',as: :appointments_index
   get 'patient/appointments' => 'appointments#patient',as: :patient_appointments
   get 'physician/appointments' => 'appointments#physician',as: :physician_appointments
   # The priority is based upon order of creation: first created -> highest priority.

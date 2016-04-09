@@ -1,5 +1,16 @@
-= form_tag(physicians_path,class:"form-horizontal  form-center") do
-  = label_tag(:name, "Physician Name:")
+= form_for(@physician,url: physicians_path,class:"form-horizontal  form-center") do |f|
+  = render 'shared/error',object: f.object
+  = f.label(:name, "Physician Name:")
+  = f.text_field :name, class:"form-control"
+  = f.label(:specialization, "Specialization:")
+  = f.text_field(:specialization, class:"form-control")
+  %br
+  = f.submit("Add Physician",class:"btn btn-primary")
+
+
+-#
+  = form_tag(physicians_path,class:"form-horizontal  form-center") do
+    = label_tag(:name, "Physician Name:")
   = text_field_tag :name,nil , class:"form-control"
   = label_tag(:specialization, "Specialization:")
   = text_field_tag(:specialization,nil ,class:"form-control")

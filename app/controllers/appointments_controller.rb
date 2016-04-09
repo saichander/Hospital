@@ -2,12 +2,13 @@ class AppointmentsController < ApplicationController
   def new
     @patients = Patient.all
     @physicians = Physician.all
+    @appointment = Appointment.new
   end
 
   def create
-    @patient = Patient.find(params[:patient])
-    @physician = Physician.find(params[:physician])
-    @appointment = @patient.appointments.create(physician_id: @physician.id,appointment_date: params[:appointment_date])
+    @patient = Patient.find(params[:appointment][:patient])
+    @physician = Physician.find(params[:appointment][:physician])
+    @appointment = @patient.appointments.create(physician_id: @physician.id,appointment_date: params[:appointment][:appointment_date])
     if @appointment.save
       redirect_to root_path
     else
@@ -56,6 +57,6 @@ class AppointmentsController < ApplicationController
 
   private
   def appointment_params
-    params.permit(:patient_id, :physician_id, :appointment_date)
+    params.require(:appointment).permit(:patient_id, :physician_id, :appointment_date)
   end
 end

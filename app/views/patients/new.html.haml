@@ -1,6 +1,18 @@
-= form_tag(patients_path,class:"form-horizontal form-center") do
-  = label_tag(:name, "Patient Name:")
+= form_for(@patient,url: patients_path,class:"form-horizontal form-center") do |f|
+  = render 'shared/error',object: f.object
+  = f.label :name,"Patient Name"
+  = f.text_field :name, class:'form-control'
+  = f.label(:mobile_no, "Mobile Number:")
+  = f.telephone_field :mobile_no, class:"form-control"
+  %br
+  = f.submit("Add Patient",class:"btn btn-primary")
+
+
+-#
+  = form_tag(patients_path,class:"form-horizontal form-center") do
+    = label_tag(:name, "Patient Name:")
   = text_field_tag(:name,nil, class:"form-control")
+
   = label_tag(:mobile_no, "Mobile Number:")
   = telephone_field_tag(:mobile_no,nil,class:"form-control")
   %br
