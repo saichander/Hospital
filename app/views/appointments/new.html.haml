@@ -1,12 +1,12 @@
 = form_for(@appointment,url: appointments_path,class:'form-horizontal form-center') do |f|
   = render 'shared/error',object: f.object
-  = f.label("Patient Name:")
+  = f.label("Patient Name:",class:'form-pad')
   = f.select "patient", @patients.collect{ |u| [u.name, u.id] },prompt: 'Select Patient', class:"form-control"
   %br
-  = f.label("Physician Name:")
+  = f.label("Physician Name:",class:'form-pad')
   = f.select "physician", @physicians.collect{ |u| [u.name, u.id] },prompt: 'Select Physician', class:"form-control"
   %br
-  = f.label(:appointment_date, "Appointment Date:")
+  = f.label(:appointment_date, "Appointment Date:", class:'form-pad')
   %br
   = f.datetime_local_field(:appointment_date,class:"form-control")
   %br

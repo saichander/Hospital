@@ -21,14 +21,15 @@ class AppointmentsController < ApplicationController
   def edit
     @patients = Patient.all
     @physicians = Physician.all
-    @edit_appointment = Appointment.find(params[:format])
+    @edit_appointment = Appointment.find(params[:id])
   end
 
   def update
-    @edit_appointment = Appointment.find(params[:format])
-    @appointment = @edit_appointment.update_attributes(appointment_params)
-    if @appointment.save
+    @edit_appointment = Appointment.find(params[:id])
+    if @appointment = @edit_appointment.update_attributes(appointment_params)
       redirect_to root_path
+    else
+      render 'edit'
     end
   end
 
@@ -37,6 +38,10 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
+    if @appointment.destroy
+      redirect_to root_path
+    end
   end
 
   def index
@@ -57,6 +62,6 @@ class AppointmentsController < ApplicationController
 
   private
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :physician_id, :appointment_date)
+    params.require(:appointment).permit( :patient_id, :physician_id, :appointment_date)
   end
 end

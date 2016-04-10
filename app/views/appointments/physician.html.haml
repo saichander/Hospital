@@ -1,6 +1,6 @@
 = form_tag physician_appointments_path,method: :get, class:'form-horizontal  form-center' do
   = label_tag(:search_term,"Physician Name:")
-  = select_tag :search_term, options_for_select(Physician.all.collect{ |u| [u.name, u.id] },'Select Physician'),class:"form-control"
+  = select_tag :search_term, options_for_select(Physician.all.collect{ |u| [u.name, u.id] },params[:search_term]),class:"form-control"
   = submit_tag("Search",class: 'btn btn-primary')
 - if params[:search_term]
   %h2 Physician Appointments

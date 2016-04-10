@@ -1,9 +1,9 @@
-= form_for(@patient,url: patients_path,class:"form-horizontal form-center") do |f|
+= form_for @patient, url: patients_path, class:'form-horizontal form-center' do |f|
   = render 'shared/error',object: f.object
   = f.label :name,"Patient Name"
   = f.text_field :name, class:'form-control'
   = f.label(:mobile_no, "Mobile Number:")
-  = f.telephone_field :mobile_no, class:"form-control"
+  = f.text_field :mobile_no, class:"form-control"
   %br
   = f.submit("Add Patient",class:"btn btn-primary")
 

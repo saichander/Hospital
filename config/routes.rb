@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   resource :patients
 
-  resource :appointments
+  resource :appointments, param: :id
+  get '/appointments/edit/:id' => 'appointments#edit',as: :edit_appointment
+  patch '/appointments/:id' => 'appointments#update',as: :update_appointment
+  delete '/appointments/:id' => 'appointments#destroy',as: :delete_appointment
   get '/appointments/index' => 'appointments#index',as: :appointments_index
   get 'patient/appointments' => 'appointments#patient',as: :patient_appointments
   get 'physician/appointments' => 'appointments#physician',as: :physician_appointments

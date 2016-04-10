@@ -2,7 +2,7 @@ class CreatePatients < ActiveRecord::Migration
   def change
     create_table :patients do |t|
       t.string :name
-      t.integer :mobile_no
+      t.string :mobile_no
 
       t.timestamps null: false
     end

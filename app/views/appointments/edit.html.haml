@@ -1,5 +1,20 @@
-= form_tag('/appointments',method: :patch,class:'form-horizontal form-center') do
-  = label_tag("Patient Name:")
+= form_for(@edit_appointment,url: update_appointment_path(@edit_appointment),method: 'patch',class:'form-horizontal form-center') do |f|
+  = render 'shared/error',object: f.object
+  = f.label("Patient Name:",class:'form-pad')
+  = f.select "patient_id", @patients.collect{ |u| [u.name, u.id] },prompt: 'Select Patient', class:"form-control"
+  %br
+  = f.label("Physician Name:",class:'form-pad')
+  = f.select "physician_id", @physicians.collect{ |u| [u.name, u.id] },prompt: 'Select Physician', class:"form-control"
+  %br
+  = f.label(:appointment_date, "Appointment Date:",class:'form-pad')
+  %br
+  = f.datetime_local_field(:appointment_date,class:"form-control")
+  %br
+  = f.submit("Edit appointment",class:"btn btn-primary")
+
+-#
+  = form_tag('/appointments',method: :patch,class:'form-horizontal form-center') do
+    = label_tag("Patient Name:")
   = select_tag "patient", options_for_select(@patients.collect{ |u| [u.name, u.id] },'Select Patient'),class:"form-control"
   = label_tag("Physician Name:")
   = select_tag "physician", options_for_select(@physicians.collect{ |u| [u.name, u.id] },'Select Physician'),class:"form-control"
