@@ -1,32 +1,30 @@
 class AppointmentsController < ApplicationController
+  before_action :set_appointment, only: [:edit, :update, :destroy]
+  before_action :set_patients_and_physicians, only: [:new, :create, :edit]
+
   def new
-    @patients = Patient.all
-    @physicians = Physician.all
     @appointment = Appointment.new
   end
 
   def create
+    #TODO: Check Values
+
     @patient = Patient.find(params[:appointment][:patient])
     @physician = Physician.find(params[:appointment][:physician])
-    @appointment = @patient.appointments.create(physician_id: @physician.id,appointment_date: params[:appointment][:appointment_date])
+    @appointment = @patient.appointments.create(physician_id: params[:appointment][:physician],appointment_date: params[:appointment][:appointment_date])
     if @appointment.save
       redirect_to root_path
     else
-      @patients = Patient.all
-      @physicians = Physician.all
       render 'new'
     end
   end
 
   def edit
-    @patients = Patient.all
-    @physicians = Physician.all
-    @edit_appointment = Appointment.find(params[:id])
   end
 
   def update
-    @edit_appointment = Appointment.find(params[:id])
-    if @appointment = @edit_appointment.update_attributes(appointment_params)
+    #TODO: change @edit_appointment
+    if @appointment.update_attributes(appointment_params)
       redirect_to root_path
     else
       render 'edit'
@@ -38,7 +36,6 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     if @appointment.destroy
       redirect_to root_path
     end
@@ -63,5 +60,14 @@ class AppointmentsController < ApplicationController
   private
   def appointment_params
     params.require(:appointment).permit( :patient_id, :physician_id, :appointment_date)
+  end
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def set_patients_and_physicians
+    @patients = Patient.all
+    @physicians = Physician.all
   end
 end

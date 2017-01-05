@@ -12,16 +12,8 @@ class PatientsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   private
+
   def patient_params
     params.require(:patient).permit(:name, :mobile_no)
   end

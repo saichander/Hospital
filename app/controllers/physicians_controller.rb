@@ -12,15 +12,6 @@ class PhysiciansController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   private
   def physician_params
     params.require(:physician).permit(:name, :specialization)
